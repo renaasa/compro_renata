@@ -33,6 +33,8 @@ if (empty($_SESSION['ID_USER'])) {
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-lite.min.js"></script>
+    <link rel="stylesheet" href="assets/js/tagify/tagify.css">
+
 
 </head>
 
@@ -69,9 +71,14 @@ if (empty($_SESSION['ID_USER'])) {
     <!-- JS -->
     <?php include 'inc/js.php'; ?>
 
+    <script src="assets/js/tagify/tagify.js"></script>
+    <script>
+        let input = document.querySelector('#tags');
+        new Tagify(input)
+    </script>
     <script>
         $('#summernote').summernote({
-            placeholder: 'Hello stand alone ui',
+            placeholder: 'Content',
             tabsize: 2,
             height: 120,
             toolbar: [
