@@ -35,6 +35,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="?page=portofolio">
+                        <i class="bi bi-circle"></i><span>Portofolio</span>
+                    </a>
+                </li>
+                <li>
                     <a href="components-breadcrumbs.html">
                         <i class="bi bi-circle"></i><span>Breadcrumbs</span>
                     </a>

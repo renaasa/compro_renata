@@ -58,12 +58,15 @@ $rowRecentBlog = mysqli_fetch_all($recentBlog, MYSQLI_ASSOC);
                             <ul class="cats">
                                 <li><a href="#"><?php echo $rowBlogDetail['name'] ?></a></li>
                             </ul>
+                            <?php 
+                            $tags = json_decode($rowBlogDetail['tags'], true);
+                            ?>
 
                             <i class="bi bi-tags"></i>
                             <ul class="tags">
-                                <li><a href="#">Creative</a></li>
-                                <li><a href="#">Tips</a></li>
-                                <li><a href="#">Marketing</a></li>
+                                <?php foreach($tags as $tag): ?>
+                                    <li><a href="#"><?php echo $tag['value'] ?></a></li>
+                                <?php endforeach ?>
                             </ul>
                         </div><!-- End meta bottom -->
 

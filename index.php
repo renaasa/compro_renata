@@ -14,6 +14,9 @@ $rowAbout = mysqli_fetch_assoc($queryAbout);
 $queryClients = mysqli_query($koneksi, "SELECT * FROM clients WHERE is_active = 1 ORDER BY id DESC");
 $rowClients = mysqli_fetch_all($queryClients, MYSQLI_ASSOC);
 
+$queryPortofolios = mysqli_query($koneksi, "SELECT * FROM portofolios WHERE is_active = 1 ORDER BY id DESC");
+$rowPortofolios = mysqli_fetch_all($queryClients, MYSQLI_ASSOC);
+
 
 ?>
 <!DOCTYPE html>

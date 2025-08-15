@@ -1,7 +1,10 @@
 <?php
 $queryBlogs = mysqli_query($koneksi, "SELECT categories.name, blogs. * FROM blogs JOIN categories ON categories.id = blogs.id_category ORDER BY blogs.id DESC");
 $rowBlogs = mysqli_fetch_all($queryBlogs, MYSQLI_ASSOC);
+
 ?>
+
+
 
 <!-- Page Title -->
 <div class="page-title accent-background">
@@ -21,43 +24,52 @@ $rowBlogs = mysqli_fetch_all($queryBlogs, MYSQLI_ASSOC);
 
     <div class="container">
         <div class="row gy-4">
-            <?php foreach($rowBlogs as $rowBlog): ?>
-            <div class="col-lg-4">
-                <article class="position-relative h-100">
-                    <?php 
-                    $date_blog = $rowBlog['created_at'];
-                    $date_blog = date("M d", strtotime($date_blog));
-                    ?>
-                    <div class="post-img position-relative overflow-hidden">
-                        <img src="admin/uploads/<?php echo $rowBlog['image'] ?>" class="img-fluid" alt="">
-                        <span class="post-date">December 12</span>
-                    </div>
+            <?php foreach ($rowBlogs as $rowBlog): ?>
 
-                    <div class="post-content d-flex flex-column">
+                <div class="col-lg-4">
+                    <article class="position-relative h-100">
 
-                        <h3 class="post-title"><?php echo $rowBlog['title'] ?></h3>
+                        <?php
+                        $date_blog = $rowBlog['created_at'];
+                        $date_blog = date("M d", strtotime($date_blog));
+                        ?>
 
-                        <div class="meta d-flex align-items-center">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-person"></i> <span class="ps-2"><?php echo $rowBlog['writer'] ?></span>
-                            </div>
-                            <span class="px-3 text-black-50">/</span>
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-folder2"></i> <span class="ps-2"><?php echo $rowBlog['name'] ?></span>
-                            </div>
+                        <div class="post-img position-relative overflow-hidden">
+                            <img src="admin/uploads/<?php echo $rowBlog['image'] ?>" class="img-fluid" alt="">
+                            <span class="post-date"><?php echo $date_blog ?></span>
                         </div>
 
-                        <?php echo $rowBlog['content'] ?>
+                        <div class="post-content d-flex flex-column">
 
-                        <hr>
+                            <h3 class="post-title"><?php echo $rowBlog['title'] ?>
+                            </h3>
 
-                        <a href="?page=blog-detail&id=<?php echo $rowBlog['id'] ?>" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                            <div class="meta d-flex align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-person"></i> <span class="ps-2"><?php echo $rowBlog['writer'] ?></span>
+                                </div>
+                                <span class="px-3 text-black-50">/</span>
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-folder2"></i> <span class="ps-2"><?php echo $rowBlog['name'] ?></span>
+                                </div>
+                            </div>
 
-                    </div>
+                            <?php echo $rowBlog['content'] ?>
 
-                </article>
-            </div><!-- End post list item -->
-            <?php endforeach ?>
+
+
+                            <hr>
+
+                            <a href="?page=blog-detail&id=<?php echo $rowBlog['id'] ?>"
+                                class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+
+                        </div>
+
+                    </article>
+                </div><!-- End post list item -->
+            <?php endforeach; ?>
+
+
         </div>
     </div>
 
